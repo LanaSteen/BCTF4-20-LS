@@ -208,6 +208,10 @@
 
 			//არაი რეფერენს ტიპია 
 
+
+			string[] texts = ["fdf", "fdfd"];
+			Console.WriteLine(texts[0][0]);
+
 		}
 	}
 }
