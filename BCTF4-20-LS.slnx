@@ -5,4 +5,5 @@
   <Project Path="lecture4/lecture4.csproj" Id="b7be7590-5f5e-4061-b4a8-85c8ba004e96" />
   <Project Path="lecture5/lecture5.csproj" Id="ff9abcba-7424-4095-9269-4b6df783e857" />
   <Project Path="lecture6/lecture6.csproj" Id="c36630d2-a182-46e7-ac50-fc0fef97ce3f" />
+  <Project Path="lecture7/lecture7.csproj" Id="711bf307-8cd5-42c3-b744-69fd90acca72" />
 </Solution>
