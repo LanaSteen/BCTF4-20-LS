@@ -45,6 +45,13 @@ namespace Lecture10
 
 			Player player = new Player();
 
+			player.Tools= new string[3] { "gun", "knife", "bomb" };
+
+			foreach (var item in player)
+			{
+				Console.WriteLine(item);
+			}
+
 			//Sprite sp = new Sprite(); // error 
 
 
@@ -55,9 +62,22 @@ namespace Lecture10
 			//Enemy 
 			//Food 
 
-		
-		
-		
+
+			Enemy enemy1 = new Enemy();
+			enemy1.Demage = 5;
+			Enemy enemy2 = new Enemy();
+			enemy2.Demage = 3;
+
+
+			Enemy[] enemies = new Enemy[2] { enemy1, enemy2 };
+			Array.Sort(enemies); // 3   5 
+
+
+			foreach (var item in enemies)
+			{
+				Console.WriteLine(item.Demage);
+			}
+
 		}
 
 

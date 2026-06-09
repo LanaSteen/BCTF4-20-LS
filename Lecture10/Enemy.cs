@@ -1,14 +1,15 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Lecture10
 {
-	internal class Enemy  : Sprite
+	internal class Enemy  : Sprite , IShooter,  IComparable<Enemy> 
 	{
 
 		public int Health { get; set; }
-		public int Demage { get; set; }
+		public int Demage { get; set; } //  5 2  1
 
 
 		public override void Move(int x, int y)
@@ -23,5 +24,14 @@ namespace Lecture10
 			Console.WriteLine("I am enemy");
 		}
 
+		public void Shoot()
+		{
+			Console.WriteLine("I am shooting");
+		}
+
+		public int CompareTo(Enemy? other)
+		{
+			return Demage.CompareTo(other.Demage);
+		}
 	}
 }
