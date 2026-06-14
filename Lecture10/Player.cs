@@ -9,7 +9,8 @@ namespace Lecture10
 	{
 
 
-		public string[] Tools { get; set; } 
+		public string[] Tools { get; set; }
+		public string[] Clothes { get; set; }
 		public int Health { get; set; }
 
 		public int Life { get; set; }	
@@ -41,9 +42,24 @@ namespace Lecture10
 			
 		}
 
+		//public IEnumerator GetEnumerator()
+		//{
+		//	return Tools.GetEnumerator();
+		//}
+
+
+
 		public IEnumerator GetEnumerator()
 		{
-			return Tools.GetEnumerator();
+			foreach (var item in Tools)
+			{
+				yield return item;
+			}
+
+			foreach (var item in Clothes)
+			{
+				yield return item;
+			}
 		}
 	}
 }

@@ -46,6 +46,7 @@ namespace Lecture10
 			Player player = new Player();
 
 			player.Tools= new string[3] { "gun", "knife", "bomb" };
+			player.Clothes = new string[2] { "jacket", "shorts" };
 
 			foreach (var item in player)
 			{
