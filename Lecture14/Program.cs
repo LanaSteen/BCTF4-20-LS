@@ -125,7 +125,7 @@ namespace Lecture14
 				Console.WriteLine(item.Name);
 			}
 
-
+			ArrayHelper.Add<Inventory>(ref player.Inventory, inventory2);
 		}
 
 
