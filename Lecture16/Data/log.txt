@@ -1,0 +1,2 @@
+2026-06-26 20:58:35 - gfgf got score: 50
+2026-06-26 20:59:28 - Score must be between 0 and 100
