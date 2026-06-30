@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Lecture15.Models
 {
-	internal class Student : Person, IPrintable
+	internal class Student : Person, IPrintable, IComparable<Student>
 	{
 
 
@@ -28,7 +28,10 @@ namespace Lecture15.Models
 
 		public Faculty Faculty { get; set; }
 
-
+		public int CompareTo(Student? other)
+		{
+			return GPA.CompareTo(other.GPA);
+		}
 
 		public void Print()
 		{

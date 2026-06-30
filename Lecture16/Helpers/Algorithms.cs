@@ -19,7 +19,7 @@ namespace Lecture16.Helpers
 	{
 
 
-	  //იპოვის გადაცემულ ელემენტს კოლექციაში
+		//იპოვის გადაცემულ ელემენტს კოლექციაში
 
 
 		//public static T FindElemtn<T>(T[] arr, T item)
@@ -87,17 +87,17 @@ namespace Lecture16.Helpers
 
 		//>50
 
-		//public static T FindFirstElementByLogic<T>(IEnumerable<T> collection, Predicate<T> predicate)
-		//{
-		//	foreach (var item in collection)
-		//	{
-		//		if (predicate(item)) // true
-		//		{
-		//			return item;
-		//		}
-		//	}
-		//	return default;
-		//}
+		public static T FindFirstElementByLogic<T>(IEnumerable<T> collection, Predicate<T> predicate)
+		{
+			foreach (var item in collection)
+			{
+				if (predicate(item)) // true
+				{
+					return item;
+				}
+			}
+			return default;
+		}
 
 		//public static T FindLastElementByLogic<T>(IEnumerable<T> collection, Func<T, bool> func)
 		//{

@@ -165,8 +165,9 @@ namespace Lecture16
 			//Console.WriteLine(Algorithms.FindFirstElementByLogic(strArr, delegate (string name) { return name.Length >= 5; }));
 			//Console.WriteLine(Algorithms.FindFirstElementByLogic(strArr,  name => name.Length >= 5));
 
-
-
+			Console.WriteLine(Algorithms.FindFirstElementByLogic(ints,  socre => socre > 65  ));
+			Console.WriteLine(Algorithms.FindFirstElementByLogic(ints, IsGreaterThan65));
+			Console.WriteLine(Algorithms.FindFirstElementByLogic(ints, IsGreaterThan50));
 			//65  Callback
 
 		}
@@ -177,11 +178,12 @@ namespace Lecture16
 
 
 		public static bool IsGreaterThan50(int socre)  => socre > 50;
-		
 
-		public static bool IsGreaterThan65(int socre)
+
+		public static bool IsGreaterThan65(int socre) 
 		{
-			return socre > 65;
-		}
+		   return socre > 65;
+		} 
+		
 	}
 }
