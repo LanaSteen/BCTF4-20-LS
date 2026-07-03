@@ -1,4 +1,10 @@
 <Solution>
+  <Folder Name="/Project/">
+    <Project Path="Application/Application.csproj" Id="049eaf14-73e0-4ca5-8eb6-67f41c6949bb" />
+    <Project Path="Core/Core.csproj" Id="db4a3a6e-8e3c-42fa-8176-b34ea4cb111f" />
+    <Project Path="Repository/Repository.csproj" Id="9dee12fe-4862-461c-8859-534b86f1b31c" />
+    <Project Path="UI/UI.csproj" Id="eef29011-133e-4446-aacf-fd14a9ba38f6" />
+  </Folder>
   <Project Path="lecture1/lecture1.csproj" />
   <Project Path="Lecture10/Lecture10.csproj" Id="2fc8f83e-fff7-4c89-8e2b-6efcee1a6598" />
   <Project Path="Lecture11/Lecture11.csproj" Id="8d00aab9-557d-4189-a904-7ac4d95b7150" />
