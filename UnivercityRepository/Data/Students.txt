@@ -1,0 +1,1 @@
+﻿{"Id":1,"Username":"John Doe","Email":"email123@gmail.com","Password":"$2a$11$DmCaNJtMuT75HznFX..GoeeJdVo9bbE5Me2r.qk2wsdLrPWAcwPJ.","VerificationCode":"2133","IsVerified":false,"Role":1}

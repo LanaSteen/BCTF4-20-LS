@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UnivercityApplication\UnivercityApplication.csproj" />
+    <ProjectReference Include="..\UnivercityCore\UnivercityCore.csproj" />
+    <ProjectReference Include="..\UnivercityRepository\UnivercityRepository.csproj" />
+  </ItemGroup>
+
+</Project>
