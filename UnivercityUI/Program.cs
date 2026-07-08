@@ -16,7 +16,7 @@ namespace UnivercityUI
 
 
 
-			studentService.RegisterStudent("John Doe", "email123@gmail.com", "password123");
+			studentService.RegisterStudent("John Doe", "email1234@gmail.com", "password123");
 
 
 		}
