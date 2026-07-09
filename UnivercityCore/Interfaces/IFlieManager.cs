@@ -18,6 +18,7 @@ namespace UnivercityCore.Interfaces
 		void DeleteStudent(int id);
 
 		void SaveChanges(List<Student> students);
+		public Student GetLastLoggedInStudent();
 
 	}
 }

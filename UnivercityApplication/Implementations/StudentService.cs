@@ -1,22 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using UnivercityApplication.Interfaces;
 using UnivercityCore.Interfaces;
 using UnivercityCore.Models;
 
 namespace UnivercityApplication.Implementations
 {
-	public class StudentService
+	public class StudentService : IStudentService
 	{
 
 		private readonly IFlieManager _fileManager;
+		private readonly EmailService _emailService;
 
 
 		//DI
-		public StudentService(IFlieManager fileManager)
+		public StudentService(IFlieManager fileManager, EmailService emailService)
 		{
 			_fileManager = fileManager;
+			_emailService = emailService;
 		}
+
 
 
 		public void RegisterStudent(string username, string email, string password)
@@ -42,10 +46,64 @@ namespace UnivercityApplication.Implementations
 				VerificationCode = verificationCode //  todo email send
 			};
 			_fileManager.AddStudent(newStudent);
+			SendVerificationCode(email, verificationCode);
 			//_fileManager.SaveChanges(_fileManager.GetAllStudents());
 		}
 
+		public void SendVerificationCode(string email, string verificationCode)
+		{
+			_emailService.SeedEmail(email, "Verification Code", verificationCode);
+		}
 
+		public bool VerifyStudent(string email, string verificationCode)
+		{
+			Student student = _fileManager.GetStudentByEmail(email);
+			if (student == null)
+			{
+				Console.WriteLine("Student not found.");
+				throw new ArgumentException("Student not found.");
+
+			}
+			if (student.VerificationCode == verificationCode)
+			{
+				student.IsVerified = true;
+				_fileManager.UpdateStudent(student);
+				Console.WriteLine("Verification successful.");
+				return true;
+			}
+
+			Console.WriteLine("Invalid verification code.");
+			return false;
+		}
+
+
+
+		public Student LoginStudent(string email, string password)
+		{
+			Student st =  _fileManager.GetStudentByEmail(email);
+			
+			
+
+			if (st != null && st.IsVerified)
+			{
+				if (BCrypt.Net.BCrypt.Verify(password, st.Password))
+				{
+					st.LastLogin = DateTime.Now;
+					_fileManager.UpdateStudent(st);
+					return st;
+				}
+			}
+			throw new Exception("Invalid email or not verified");
+		}
+
+
+		
+		public void LogoutStudent(string email)
+		{
+			Student st = _fileManager.GetStudentByEmail(email);
+			st.LastLogin = null;
+			_fileManager.UpdateStudent(st);
+		}
 
 	}
 }

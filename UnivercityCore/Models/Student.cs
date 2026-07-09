@@ -19,9 +19,11 @@ namespace UnivercityCore.Models
 		public string VerificationCode { get; set; }
 
 
-		public bool IsVerified { get; set; }
+		public bool IsVerified { get; set; } = false;
 
 		public Roles Role { get; set; } = Roles.Student;
+
+		public DateTime? LastLogin { get; set; }
 
 	}
 }

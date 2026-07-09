@@ -11,9 +11,7 @@ namespace UnivercityRepository
 {
 	public class FileRepository : IFlieManager
 	{
-		private readonly string _filePath = "C:\\Users\\l4nst\\Desktop\\doit2026\\BCTF4-20-LS\\UnivercityRepository\\Data\\Students.txt";
-
-		
+		private readonly string _filePath = "C:\\Users\\l4nst\\Desktop\\doit2026\\BCTF4-20-LS-v1\\UnivercityRepository\\Data\\Students.txt";
 
 
 		public void AddStudent(Student student)
@@ -70,7 +68,13 @@ namespace UnivercityRepository
 		//1,"hjjh",
 
 
+		public Student GetLastLoggedInStudent()
+		{
+			List<Student> students = GetAllStudents();
+			Student student = students.OrderBy(x => x.LastLogin).LastOrDefault();
 
+			return student;
+		}
 
 
 		public Student GetStudentByEmail(string email)

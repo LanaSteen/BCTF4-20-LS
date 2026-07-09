@@ -1,1 +1,1 @@
-﻿{"Id":1,"Username":"John Doe","Email":"email123@gmail.com","Password":"$2a$11$DmCaNJtMuT75HznFX..GoeeJdVo9bbE5Me2r.qk2wsdLrPWAcwPJ.","VerificationCode":"2133","IsVerified":false,"Role":1}
+{"Id":1,"Username":"Anna Smith","Email":"steenlana492@gmail.com","Password":"$2a$11$jXKPPogAHVxyGs35co1.8OC.Ok2cQldPpIRTI5S0ZZcpfRKls44A2","VerificationCode":"9859","IsVerified":true,"Role":1,"LastLogin":"2026-07-09T21:45:23.6203876+04:00"}
