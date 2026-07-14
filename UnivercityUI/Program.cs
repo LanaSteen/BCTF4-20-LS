@@ -46,7 +46,8 @@ namespace UnivercityUI
 		}
 
 
-
+		//TODO  html ის გაგზავნა მეილზე
+		//
 
 
 	}
