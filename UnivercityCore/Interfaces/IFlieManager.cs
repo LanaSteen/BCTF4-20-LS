@@ -8,17 +8,17 @@ namespace UnivercityCore.Interfaces
 	public interface IFlieManager
 	{
 
-		List<Student> GetAllStudents();
+		Task<List<Student>> GetAllStudents();
 
-		Student GetStudentById(int id);
-		Student GetStudentByEmail(string email);
+		Task<Student> GetStudentById(int id);
+		Task<Student> GetStudentByEmail(string email);
 
-		void AddStudent(Student student);
-		void UpdateStudent(Student student);
-		void DeleteStudent(int id);
+		Task AddStudent(Student student);
+		Task UpdateStudent(Student student);
+		Task DeleteStudent(int id);
 
-		void SaveChanges(List<Student> students);
-		public Student GetLastLoggedInStudent();
+		Task SaveChanges(List<Student> students);
+	    Task<Student> GetLastLoggedInStudent();
 
 	}
 }

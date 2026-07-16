@@ -7,10 +7,10 @@ namespace UnivercityApplication.Interfaces
 {
 	public interface IStudentService
 	{
-		void RegisterStudent(string username, string email, string password);
+		Task RegisterStudent(string username, string email, string password);
 
-		Student LoginStudent(string username, string password);
+		Task<Student> LoginStudent(string username, string password);
 
-		void SendVerificationCode(string email, string verificationCode);
+		Task SendVerificationCode(string email, string verificationCode);
 	}
 }

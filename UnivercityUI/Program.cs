@@ -9,7 +9,7 @@ namespace UnivercityUI
 {
 	internal class Program
 	{
-		static void Main(string[] args)
+		static async Task Main(string[] args)
 		{
 
 
@@ -31,7 +31,7 @@ namespace UnivercityUI
 			////4465
 
 
-			Student lastLoggedInStudent = repository.GetLastLoggedInStudent();
+			Student lastLoggedInStudent =await repository.GetLastLoggedInStudent();
 			Console.WriteLine(lastLoggedInStudent.Username + " LAst Logged In");
 
 

@@ -23,9 +23,9 @@ namespace UnivercityApplication.Implementations
 
 
 
-		public void RegisterStudent(string username, string email, string password)
+		public async Task RegisterStudent(string username, string email, string password)
 		{
-			var students = _fileManager.GetAllStudents();
+			var students =await _fileManager.GetAllStudents();
 			int idNext = students.Count + 1;
 
 			var existingStudent = _fileManager.GetStudentByEmail(email);
@@ -50,14 +50,14 @@ namespace UnivercityApplication.Implementations
 			//_fileManager.SaveChanges(_fileManager.GetAllStudents());
 		}
 
-		public void SendVerificationCode(string email, string verificationCode)
+		public async Task SendVerificationCode(string email, string verificationCode)
 		{
 			_emailService.SeedEmail(email, "Verification Code", verificationCode);
 		}
 
-		public bool VerifyStudent(string email, string verificationCode)
+		public async Task<bool> VerifyStudent(string email, string verificationCode)
 		{
-			Student student = _fileManager.GetStudentByEmail(email);
+			Student student =await _fileManager.GetStudentByEmail(email);
 			if (student == null)
 			{
 				Console.WriteLine("Student not found.");
@@ -78,9 +78,9 @@ namespace UnivercityApplication.Implementations
 
 
 
-		public Student LoginStudent(string email, string password)
+		public async Task<Student> LoginStudent(string email, string password)
 		{
-			Student st =  _fileManager.GetStudentByEmail(email);
+			Student st = await _fileManager.GetStudentByEmail(email);
 			
 			
 
@@ -98,9 +98,9 @@ namespace UnivercityApplication.Implementations
 
 
 		
-		public void LogoutStudent(string email)
+		public async Task LogoutStudent(string email)
 		{
-			Student st = _fileManager.GetStudentByEmail(email);
+			Student st =await _fileManager.GetStudentByEmail(email);
 			st.LastLogin = null;
 			_fileManager.UpdateStudent(st);
 		}
