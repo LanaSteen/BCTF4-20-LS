@@ -1,4 +1,10 @@
 <Solution>
+  <Folder Name="/AdoNetProject/">
+    <Project Path="UniversityApplication/UniversityApplication.csproj" Id="d2cece5f-afa1-4f8d-835d-e2dbd13b2587" />
+    <Project Path="UniversityDomain/UniversityDomain.csproj" Id="65e5714f-d1a9-4c5b-b200-3aa4b9f1612d" />
+    <Project Path="UniversityInfrastucture/UniversityInfrastucture.csproj" Id="89d0ab7e-e925-40e4-8873-475a89d7233b" />
+    <Project Path="UniversityPresentation/UniversityPresentation.csproj" Id="a6075e56-9977-4368-88e9-dd6a7b03339c" />
+  </Folder>
   <Folder Name="/bfrWEB/">
     <Project Path="lecture1/lecture1.csproj" />
     <Project Path="Lecture10/Lecture10.csproj" Id="2fc8f83e-fff7-4c89-8e2b-6efcee1a6598" />

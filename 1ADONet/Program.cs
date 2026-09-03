@@ -7,7 +7,8 @@ namespace _1ADONet
 	internal class Program
 	{
 
-		private static readonly string _connectionString = "Data Source=LAPTOP-HE9JLDVE; Database=UNIVERSITY; Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;Application Name=\"SQL Server Management Studio\";Command Timeout=0";
+		private static readonly string _connectionString = "Server=LAPTOP-HE9JLDVE;Database=UNIVERSITY;Trusted_Connection=True; TrustServerCertificate=True;";
+
 
 
 		static void Main(string[] args)
@@ -24,10 +25,10 @@ namespace _1ADONet
 			using (SqlConnection connection = new SqlConnection(_connectionString))
 			{
 				connection.Open();
-				string query = "SELECT * FROM Students";
-				using (SqlCommand command = new SqlCommand(query, connection))
+				//string query = ;
+				using (SqlCommand command = new SqlCommand("SELECT * FROM Students", connection))
 				{
-					using (SqlDataReader reader = command.ExecuteReader())
+					using (SqlDataReader reader = command.ExecuteReader()) 
 					{
 						while (reader.Read())
 						{
