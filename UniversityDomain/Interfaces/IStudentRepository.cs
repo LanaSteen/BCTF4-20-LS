@@ -10,6 +10,8 @@ namespace UniversityDomain.Interfaces
 		IEnumerable<Student> GetAll();
 		Student GetById(int id);
 		bool Add(Student student);
-	
+		bool UpdateGpa(int id, decimal gpa);
+
+
 	}
 }

@@ -18,5 +18,10 @@ namespace UniversityDomain.Models
 		public bool? IsActive { get; set; }
 		public DateTime? RegisteredAt { get; set; }
 		public int? DepartmentId { get; set; }
+
+		public override string ToString()
+		{
+			return $"Student: Id={Id}, FirstName={FirstName}, LastName={LastName}, Email={Email}, Age={Age}, GPA={GPA}, PhoneNumber={PhoneNumber}, IsActive={IsActive}, RegisteredAt={RegisteredAt}, DepartmentId={DepartmentId}";
+		}
 	}
 }
