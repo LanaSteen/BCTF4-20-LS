@@ -40,4 +40,5 @@
     <Project Path="UnivercityUI/UnivercityUI.csproj" Id="7a1f5f92-d98b-49c4-aa08-0a3f77a4ec23" />
   </Folder>
   <Project Path="1ADONet/1ADONet.csproj" Id="fb5160bd-b148-48a3-af34-fb7524feb610" />
+  <Project Path="1EFcore/1EFcore.csproj" Id="de5b7bba-3fd1-4a44-b3ee-eecaa989d8c0" />
 </Solution>

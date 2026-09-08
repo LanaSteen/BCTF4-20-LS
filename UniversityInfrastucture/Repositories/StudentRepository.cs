@@ -86,7 +86,7 @@ namespace UniversityInfrastucture.Repositories
 			
 			using var connection = new SqlConnection(_connectionString);
 			using var command = new SqlCommand(query, connection);
-			command.CommandType = System.Data.CommandType.Text; // default is text, but you can set it explicitly if you want to use a stored procedure instead
+			//command.CommandType = System.Data.CommandType.Text; // default is text, but you can set it explicitly if you want to use a stored procedure instead
 
 
 			// todo procedure
