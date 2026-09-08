@@ -10,6 +10,7 @@ namespace _1EFcore.Data
 	{
 		public DbSet<Student> Students { get; set; }
 		public DbSet<Course> Courses { get; set; }
+		public DbSet<StudentProfile> Profiles { get; set; }
 
 
 
@@ -27,6 +28,11 @@ namespace _1EFcore.Data
 				.HasMany(s => s.Courses)
 				.WithMany(c => c.Students)
 				.UsingEntity(st=> st.ToTable("StudentsCourses"));
+
+			modelBuilder.Entity<Student>()
+				.HasOne(s => s.Profile)
+				.WithOne(p => p.Student)
+				.HasForeignKey<StudentProfile>(p => p.StudentId);
 		}
 	}
 }

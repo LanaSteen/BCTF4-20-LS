@@ -21,5 +21,6 @@ namespace _1EFcore.Models.Entities
 		public int Age { get; set; }
 		public decimal GPA { get; set; }
 		public ICollection<Course> Courses { get; set; }
+		public StudentProfile Profile { get; set; }
 	}
 }
