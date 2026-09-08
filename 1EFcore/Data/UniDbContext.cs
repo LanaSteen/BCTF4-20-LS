@@ -11,6 +11,8 @@ namespace _1EFcore.Data
 		public DbSet<Student> Students { get; set; }
 		public DbSet<Course> Courses { get; set; }
 
+
+
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
 			//base.OnConfiguring(optionsBuilder);
@@ -20,6 +22,11 @@ namespace _1EFcore.Data
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			base.OnModelCreating(modelBuilder);
+
+			modelBuilder.Entity<Student>()
+				.HasMany(s => s.Courses)
+				.WithMany(c => c.Students)
+				.UsingEntity(st=> st.ToTable("StudentsCourses"));
 		}
 	}
 }
