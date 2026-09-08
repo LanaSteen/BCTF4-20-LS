@@ -22,5 +22,7 @@ namespace _1EFcore.Models.Entities
 		public decimal GPA { get; set; }
 		public ICollection<Course> Courses { get; set; }
 		public StudentProfile Profile { get; set; }
+		public int DepartmentId { get; set; }
+		public Department Department { get; set; }
 	}
 }

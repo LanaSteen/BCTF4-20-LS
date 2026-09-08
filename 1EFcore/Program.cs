@@ -16,18 +16,18 @@ namespace _1EFcore
 
 
 
-			var newCourse = new Course { Title = "Mathematics" };
-			var newStudent = new Student
-			{
-				FirstName = "George",
-				LastName = "Smith",
-				Email = "4dsd@dfdf",
-				Phone = "49595959595",
-				Age = 25,
-				GPA = 2.9m,
-				Courses = new List<Course> { newCourse }
+			//var newCourse = new Course { Title = "Mathematics" };
+			//var newStudent = new Student
+			//{
+			//	FirstName = "George",
+			//	LastName = "Smith",
+			//	Email = "4dsd@dfdf",
+			//	Phone = "49595959595",
+			//	Age = 25,
+			//	GPA = 2.9m,
+			//	Courses = new List<Course> { newCourse }
 
-			};
+			//};
 
 			//context.Courses.Add(newCourse);
 			//context.Students.Add(newStudent);
@@ -47,28 +47,28 @@ namespace _1EFcore
 			//}
 
 
-			var studentToDelete = context.Students.FirstOrDefault(c => c.Id == 2);
+			//var studentToDelete = context.Students.FirstOrDefault(c => c.Id == 2);
 
-			if (studentToDelete != null)
-			{
-				context.Students.Remove(studentToDelete);
-				context.SaveChanges();
-			}
+			//if (studentToDelete != null)
+			//{
+			//	context.Students.Remove(studentToDelete);
+			//	context.SaveChanges();
+			//}
 
 
 
-			var studentsAll = context.Students
-				.Include(s => s.Courses)
-				.ToList();
-			foreach (var item in studentsAll)
-			{
-				Console.Write($"{item.Id} {item.FirstName} {item.LastName} {item.Email} {item.Age} " );
-				foreach (var course in item.Courses)
-				{
-					Console.Write($"{course.Title} ");
-				}
-				Console.WriteLine();
-			}
+			//var studentsAll = context.Students
+			//	.Include(s => s.Courses)
+			//	.ToList();
+			//foreach (var item in studentsAll)
+			//{
+			//	Console.Write($"{item.Id} {item.FirstName} {item.LastName} {item.Email} {item.Age} " );
+			//	foreach (var course in item.Courses)
+			//	{
+			//		Console.Write($"{course.Title} ");
+			//	}
+			//	Console.WriteLine();
+			//}
 
 
 		}

@@ -11,8 +11,7 @@ namespace _1EFcore.Data
 		public DbSet<Student> Students { get; set; }
 		public DbSet<Course> Courses { get; set; }
 		public DbSet<StudentProfile> Profiles { get; set; }
-
-
+		public DbSet<Department> Departmets { get; set; }
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
@@ -33,6 +32,11 @@ namespace _1EFcore.Data
 				.HasOne(s => s.Profile)
 				.WithOne(p => p.Student)
 				.HasForeignKey<StudentProfile>(p => p.StudentId);
+			
+			modelBuilder.Entity<Student>()
+				.HasOne(s => s.Department)
+				.WithMany(d => d.Students)
+				.HasForeignKey(s => s.DepartmentId);
 		}
 	}
 }
