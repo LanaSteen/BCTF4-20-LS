@@ -26,3 +26,6 @@ namespace _1EFcore.Models.Entities
 		public Department Department { get; set; }
 	}
 }
+
+
+//reflection

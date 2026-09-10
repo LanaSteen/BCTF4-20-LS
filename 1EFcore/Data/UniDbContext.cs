@@ -8,7 +8,7 @@ namespace _1EFcore.Data
 {
 	internal class UniDbContext : DbContext
 	{
-		public DbSet<Student> Students { get; set; }
+		public DbSet<Student> Students { get; set; } // ცხრილია
 		public DbSet<Course> Courses { get; set; }
 		public DbSet<StudentProfile> Profiles { get; set; }
 		public DbSet<Department> Departmets { get; set; }

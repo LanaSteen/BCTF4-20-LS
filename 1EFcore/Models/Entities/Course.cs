@@ -10,7 +10,8 @@ namespace _1EFcore.Models.Entities
 		public int Id { get; set; }
 		[Required]
 		[MaxLength(100)]
-		public string Title { get; set; }
+		//[varchar] // todo 
+		public string Title { get; set; } //nvarchar(100)
 
 		public ICollection<Student> Students { get; set; }
 	}
