@@ -17,17 +17,17 @@ namespace Movie.Infrastucture.Repositories
 		}
 
 
-		public async Task AddMovie(Domain.Entities.Movie movie)
+		public async Task AddMovieAsync(Domain.Entities.Movie movie)
 		{
-		    _movieDbContext.Movies.Add(movie);
-			 _movieDbContext.SaveChanges();
+		   await _movieDbContext.Movies.AddAsync(movie);
+			await _movieDbContext.SaveChangesAsync();
 		}
 
-		public async Task<ICollection<Domain.Entities.Movie>> GetAllMovies()
+		public async Task<ICollection<Domain.Entities.Movie>> GetAllMoviesAsync()
 		{
-			return _movieDbContext.Movies
+			return await _movieDbContext.Movies
 				.Include(m => m.Studio)
-				.ToList();
+				.ToListAsync();
 		}
 	}
 }

@@ -7,7 +7,7 @@ namespace Movie.Domain.Interfaces
 {
 	public interface IMovieRepository
 	{
-		Task<ICollection<Movie.Domain.Entities.Movie>> GetAllMovies();
-		Task AddMovie(Movie.Domain.Entities.Movie movie);
+		Task<ICollection<Movie.Domain.Entities.Movie>> GetAllMoviesAsync();
+		Task AddMovieAsync(Movie.Domain.Entities.Movie movie);
 	}
 }
