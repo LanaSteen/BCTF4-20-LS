@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Movie.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -18,9 +19,14 @@ namespace Movie.Infrastucture.Data
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
+			IConfiguration configuration = new ConfigurationBuilder()
+				.SetBasePath(AppContext.BaseDirectory)
+				.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+				.Build();
 
-			optionsBuilder.UseSqlServer("Server=LAPTOP-HE9JLDVE;Database=MovieDB;Trusted_Connection=True; TrustServerCertificate=True;");
+			var _connectionString = configuration.GetConnectionString("DefaultConnection");
 
+			optionsBuilder.UseSqlServer(_connectionString);
 		}
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
