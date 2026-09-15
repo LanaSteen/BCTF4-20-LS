@@ -45,11 +45,17 @@ namespace Movie.UI
 			//await dbContext.SaveChangesAsync();
 
 
-			var movies = await movieService.GetAllMoviesAsync();
-			foreach (var movie in movies)
-			{
-				Console.WriteLine(movie);
-			}
+			var movieById = await movieService.GetMovieByIdAsync(1);
+			Console.WriteLine(movieById);
+
+
+
+
+			//var movies = await movieService.GetAllMoviesAsync();
+			//foreach (var movie in movies)
+			//{
+			//	Console.WriteLine(movie);
+			//}
 
 
 		}

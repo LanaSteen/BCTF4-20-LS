@@ -33,6 +33,22 @@ namespace Movie.Service.Implementations
 			return movieDtos;
 		}
 
+		public async Task<MovieDTO> GetMovieByIdAsync(int id)
+		{
+			var movie = await _movieRepository.GetMovieByIdAsync(id);
+
+			if (movie == null)
+			{
+				throw new ArgumentException("Movie not found.", nameof(id));
+			}
+
+			return new MovieDTO
+			{
+				Title = movie.Title,
+				ReleaseYear = movie.ReleaseYear,
+				StudioName = movie.Studio.Name,
+			};
+		}
 
 		public async Task AddMovieAsync(CreateMovieDTO movieDto)
 		{

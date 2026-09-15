@@ -41,11 +41,18 @@ namespace Movie.Infrastucture.Data
 				.HasMaxLength(100);
 
 
+			// studioDetails დავამატე მაგრამ არაა აუცილებელი
+			modelBuilder.Entity<StudioDetails>()
+			.Property(sd => sd.LicenseNumber)
+			.IsRequired()
+			.HasMaxLength(100);
 
 			modelBuilder.Entity<Studio>()
 				.HasOne(s => s.StudioDetails)
 				.WithOne(sd => sd.Studio)
-				.HasForeignKey<StudioDetails>(sd => sd.StudioId);
+				.HasForeignKey<StudioDetails>(sd => sd.StudioId)
+				.OnDelete(DeleteBehavior.Cascade);
+
 
 			modelBuilder.Entity<Studio>().Property(m => m.Name)
 					.IsRequired()
@@ -62,12 +69,14 @@ namespace Movie.Infrastucture.Data
 			modelBuilder.Entity<Country>()
 				.HasMany(c => c.Studios)
 				.WithOne(s => s.Country)
-				.HasForeignKey(s => s.CountryId);
+				.HasForeignKey(s => s.CountryId)
+				.OnDelete(DeleteBehavior.Restrict);
 
+			//ეს ზედმეტია ვაკომენტარებ ზემოთ წერია 
 
-			modelBuilder.Entity<Actor>()
-				.HasMany(a => a.Movies)
-				.WithMany(m => m.Actors);
+			//modelBuilder.Entity<Actor>()
+			//	.HasMany(a => a.Movies)
+			//	.WithMany(m => m.Actors);
 
 
 			//data seeding
