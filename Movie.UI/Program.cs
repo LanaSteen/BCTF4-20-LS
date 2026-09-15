@@ -1,8 +1,11 @@
-﻿using Movie.Domain.DTOs;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Movie.Domain.DTOs;
 using Movie.Domain.Entities;
+using Movie.Domain.Interfaces;
 using Movie.Infrastucture.Data;
 using Movie.Infrastucture.Repositories;
 using Movie.Service.Implementations;
+using Movie.Service.Interfaces;
 
 namespace Movie.UI
 {
@@ -10,13 +13,25 @@ namespace Movie.UI
 	{
 		static async Task Main(string[] args)
 		{
+			#region without DI container
 
-			var dbContext = new MovieDbContext();
-			var movieRepository = new MovieRepository(dbContext);
-			var movieService = new MovieService(movieRepository);
+			//var dbContext = new MovieDbContext();
+			//var movieRepository = new MovieRepository(dbContext);
+			//var movieService = new MovieService(movieRepository);
+			#endregion
+
+			//DI container
+
+			var servises = new ServiceCollection();
+
+			servises.AddDbContext<MovieDbContext>();
+			servises.AddScoped<IMovieRepository, MovieRepository>();
+			servises.AddScoped<IMovieService, MovieService>();
 
 
+			var serviceProvider = servises.BuildServiceProvider();
 
+			var movieService = serviceProvider.GetRequiredService<IMovieService>();
 
 
 			//var studio = new Studio { Name = "Warner Bros", CountryId = 1 };
