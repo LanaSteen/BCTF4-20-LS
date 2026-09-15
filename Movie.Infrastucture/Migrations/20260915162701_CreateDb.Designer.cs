@@ -11,8 +11,8 @@ using Movie.Infrastucture.Data;
 namespace Movie.Infrastucture.Migrations
 {
     [DbContext(typeof(MovieDbContext))]
-    [Migration("20260910175629_ConctSicged")]
-    partial class ConctSicged
+    [Migration("20260915162701_CreateDb")]
+    partial class CreateDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -60,7 +60,7 @@ namespace Movie.Infrastucture.Migrations
                     b.ToTable("Actors");
                 });
 
-            modelBuilder.Entity("Movie.Domain.Entities.Coutnry", b =>
+            modelBuilder.Entity("Movie.Domain.Entities.Country", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -74,7 +74,7 @@ namespace Movie.Infrastucture.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Directors");
+                    b.ToTable("Countries");
 
                     b.HasData(
                         new
@@ -140,7 +140,7 @@ namespace Movie.Infrastucture.Migrations
 
                     b.HasIndex("CountryId");
 
-                    b.ToTable("Genres");
+                    b.ToTable("Studios");
                 });
 
             modelBuilder.Entity("Movie.Domain.Entities.StudioDetails", b =>
@@ -194,7 +194,7 @@ namespace Movie.Infrastucture.Migrations
 
             modelBuilder.Entity("Movie.Domain.Entities.Studio", b =>
                 {
-                    b.HasOne("Movie.Domain.Entities.Coutnry", "Country")
+                    b.HasOne("Movie.Domain.Entities.Country", "Country")
                         .WithMany("Studios")
                         .HasForeignKey("CountryId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -214,7 +214,7 @@ namespace Movie.Infrastucture.Migrations
                     b.Navigation("Studio");
                 });
 
-            modelBuilder.Entity("Movie.Domain.Entities.Coutnry", b =>
+            modelBuilder.Entity("Movie.Domain.Entities.Country", b =>
                 {
                     b.Navigation("Studios");
                 });

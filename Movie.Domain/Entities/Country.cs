@@ -11,7 +11,7 @@ namespace Movie.Domain.Entities
 //o Name(string, სავალდებულო, მაქსიმუმ 100 სიმბოლო)
 //o Studios(კოლექცია Studio-სთან — One-to-Many)
 
-	public class Coutnry
+	public class Country
 	{
 
 		public int Id { get; set; }

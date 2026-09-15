@@ -27,7 +27,7 @@ namespace Movie.Infrastucture.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Directors",
+                name: "Countries",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -36,11 +36,11 @@ namespace Movie.Infrastucture.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Directors", x => x.Id);
+                    table.PrimaryKey("PK_Countries", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Genres",
+                name: "Studios",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -50,11 +50,11 @@ namespace Movie.Infrastucture.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Genres", x => x.Id);
+                    table.PrimaryKey("PK_Studios", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Genres_Directors_CountryId",
+                        name: "FK_Studios_Countries_CountryId",
                         column: x => x.CountryId,
-                        principalTable: "Directors",
+                        principalTable: "Countries",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -73,9 +73,9 @@ namespace Movie.Infrastucture.Migrations
                 {
                     table.PrimaryKey("PK_Movies", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Movies_Genres_StudioId",
+                        name: "FK_Movies_Studios_StudioId",
                         column: x => x.StudioId,
-                        principalTable: "Genres",
+                        principalTable: "Studios",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -93,9 +93,9 @@ namespace Movie.Infrastucture.Migrations
                 {
                     table.PrimaryKey("PK_StudioDetails", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_StudioDetails_Genres_StudioId",
+                        name: "FK_StudioDetails_Studios_StudioId",
                         column: x => x.StudioId,
-                        principalTable: "Genres",
+                        principalTable: "Studios",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -125,7 +125,7 @@ namespace Movie.Infrastucture.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Directors",
+                table: "Countries",
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
@@ -140,11 +140,6 @@ namespace Movie.Infrastucture.Migrations
                 column: "MoviesId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Genres_CountryId",
-                table: "Genres",
-                column: "CountryId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Movies_StudioId",
                 table: "Movies",
                 column: "StudioId");
@@ -154,6 +149,11 @@ namespace Movie.Infrastucture.Migrations
                 table: "StudioDetails",
                 column: "StudioId",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Studios_CountryId",
+                table: "Studios",
+                column: "CountryId");
         }
 
         /// <inheritdoc />
@@ -172,10 +172,10 @@ namespace Movie.Infrastucture.Migrations
                 name: "Movies");
 
             migrationBuilder.DropTable(
-                name: "Genres");
+                name: "Studios");
 
             migrationBuilder.DropTable(
-                name: "Directors");
+                name: "Countries");
         }
     }
 }

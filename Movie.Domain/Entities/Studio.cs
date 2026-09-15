@@ -20,7 +20,7 @@ namespace Movie.Domain.Entities
 		public int Id { get; set; }
 		public string Name { get; set; }
 		public int CountryId { get; set; }
-		public Coutnry Country { get; set; }
+		public Country Country { get; set; }
 		public StudioDetails StudioDetails { get; set; }
 		public ICollection<Movie> Movies { get; set; } = new List<Movie>();
 	}

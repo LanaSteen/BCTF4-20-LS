@@ -11,8 +11,8 @@ namespace Movie.Infrastucture.Data
 	{
 		public DbSet<Movie.Domain.Entities.Movie> Movies { get; set; }
 		public DbSet<Actor> Actors { get; set; }
-		public DbSet<Coutnry> Directors { get; set; }
-		public DbSet<Studio> Genres { get; set; }
+		public DbSet<Country> Countries { get; set; }
+		public DbSet<Studio> Studios { get; set; }
 		public DbSet<StudioDetails> StudioDetails { get; set; }
 
 
@@ -59,7 +59,7 @@ namespace Movie.Infrastucture.Data
 
 
 
-			modelBuilder.Entity<Coutnry>()
+			modelBuilder.Entity<Country>()
 				.HasMany(c => c.Studios)
 				.WithOne(s => s.Country)
 				.HasForeignKey(s => s.CountryId);
@@ -71,11 +71,11 @@ namespace Movie.Infrastucture.Data
 
 
 			//data seeding
-			modelBuilder.Entity<Coutnry>()
+			modelBuilder.Entity<Country>()
 				.HasData(
-					new Coutnry { Id = 1, Name = "USA" },
-					new Coutnry { Id = 2, Name = "UK" },
-					new Coutnry { Id = 3, Name = "France" }
+					new Country { Id = 1, Name = "USA" },
+					new Country { Id = 2, Name = "UK" },
+					new Country { Id = 3, Name = "France" }
 				);
 
 		}
