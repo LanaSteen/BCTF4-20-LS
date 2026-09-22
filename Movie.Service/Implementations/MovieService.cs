@@ -11,9 +11,11 @@ namespace Movie.Service.Implementations
 	{
 
 		private readonly IMovieRepository _movieRepository;
+		private readonly IUnitOfWork _unitOfWork;
 
-		public MovieService(IMovieRepository movieRepository) {
+		public MovieService(IMovieRepository movieRepository, IUnitOfWork unitOfWork) {
 			_movieRepository = movieRepository;
+			_unitOfWork = unitOfWork;
 		}
 
 
@@ -83,7 +85,63 @@ namespace Movie.Service.Implementations
 
 
 			await _movieRepository.AddMovieAsync(movie);
+			await _unitOfWork.SaveChangesAsync();
 		}
 
+
+
+
+
+		public async Task UpdateMovieAsync(int id, UpdateMovieDTO movieDto)
+		{
+			#region validation
+
+			if (movieDto == null)
+			{
+				throw new ArgumentNullException(nameof(movieDto));
+			}
+			if (string.IsNullOrWhiteSpace(movieDto.Title))
+			{
+				throw new ArgumentException("Movie title cannot be null or empty.", nameof(movieDto.Title));
+			}
+			if (movieDto.ReleaseYear < 0)
+			{
+				throw new ArgumentException("Movie release year cannot be negative.", nameof(movieDto.ReleaseYear));
+			}
+			if (movieDto.ReleaseYear > DateTime.Now.Year)
+			{
+				throw new ArgumentException("Movie release year cannot be from future.", nameof(movieDto.ReleaseYear));
+			}
+			if (movieDto.StudioId <= 0)
+			{
+				throw new ArgumentException("Movie studio ID must be a positive integer.", nameof(movieDto.StudioId));
+			}
+			#endregion
+			var movie = new Movie.Domain.Entities.Movie
+			{
+				Title = movieDto.Title,
+				ReleaseYear = movieDto.ReleaseYear,
+				StudioId = movieDto.StudioId
+			};
+
+
+
+			await _movieRepository.UpdateMovieAsync(id, movie);
+			await _unitOfWork.SaveChangesAsync();
+		}
+
+
+
+		public async Task DeleteMovieAsync(int id)
+		{
+			if(id <= 0)
+			{
+				throw new ArgumentException("Movie ID must be a positive integer.", nameof(id));
+			}
+			await _movieRepository.DeleteMovieAsync(id);
+			await _unitOfWork.SaveChangesAsync();
+		}
 	}
 }
+
+

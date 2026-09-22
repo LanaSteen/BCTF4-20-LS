@@ -19,8 +19,8 @@ namespace Movie.Infrastucture.Repositories
 
 		public async Task AddMovieAsync(Domain.Entities.Movie movie)
 		{
-		   await _movieDbContext.Movies.AddAsync(movie);
-			await _movieDbContext.SaveChangesAsync();
+		    await _movieDbContext.Movies.AddAsync(movie);
+			//await _movieDbContext.SaveChangesAsync();
 		}
 
 		public async Task<ICollection<Domain.Entities.Movie>> GetAllMoviesAsync()
@@ -37,5 +37,41 @@ namespace Movie.Infrastucture.Repositories
 				.Include(m => m.Studio)
 				.FirstOrDefaultAsync(m => m.Id == id);
 		}
+
+
+		public async Task UpdateMovieAsync(int id, Domain.Entities.Movie movie)
+		{
+			var movieExists =
+				await _movieDbContext.Movies
+				.FirstOrDefaultAsync(m => m.Id == id);
+			if (movieExists == null)
+			{
+				throw new ArgumentException("Movie not found");
+			}
+
+			movieExists.Title = movie.Title;
+			movieExists.ReleaseYear = movie.ReleaseYear;
+			movieExists.StudioId = movie.StudioId;
+
+
+			//await _movieDbContext.SaveChangesAsync();
+		}
+
+
+		public async Task  DeleteMovieAsync(int id)
+		{
+			
+			var movieExists = await _movieDbContext.Movies
+				.FirstOrDefaultAsync(m => m.Id == id);
+			if (movieExists == null)
+			{
+				throw new ArgumentException("Movie not found");
+			}
+
+			_movieDbContext.Movies.Remove(movieExists);
+			//await _movieDbContext.SaveChangesAsync();
+
+		}
+
 	}
 }
