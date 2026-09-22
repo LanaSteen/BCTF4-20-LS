@@ -77,7 +77,7 @@ namespace Movie.Infrastucture.Repositories
 
 
 		//1,3
-		public async Task UpdateActorMovie(int actorId, ICollection<int> movieIds)
+		public async Task UpdateActorMoviesAsync(int actorId, ICollection<int> movieIds)
 		{
 			var actor = await _movieDbContext.Actors
 				.Include(a => a.Movies)

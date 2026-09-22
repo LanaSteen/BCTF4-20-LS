@@ -12,7 +12,7 @@ namespace Movie.Domain.Interfaces
 		Task<Actor> GetActorByIdAsync(int id);
 		Task UpdateActorAsync(int id, Actor actor);
 		Task DeleteActorAsync(int id);
-		Task UpdateActorMovie(int actorId, ICollection<int> movieIds);
+		Task UpdateActorMoviesAsync(int actorId, ICollection<int> movieIds);
 
 	}
 }

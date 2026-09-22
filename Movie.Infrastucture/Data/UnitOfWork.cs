@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Movie.Domain.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Movie.Infrastucture.Data
 {
-	public class UnitOfWork
+	public class UnitOfWork : IUnitOfWork
 	{
 
 		private readonly MovieDbContext _context;

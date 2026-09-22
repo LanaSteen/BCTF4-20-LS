@@ -73,5 +73,26 @@ namespace Movie.Infrastucture.Repositories
 
 		}
 
+
+
+		//public async Task<ICollection<Domain.Entities.Movie>> SearchMovieAsync(
+		//	int year,
+		//	string countryName,
+		//	int acorCount
+		//	) 
+		//{
+		//	//return await _movieDbContext.Movies
+		//	//	.Where(m => m.ReleaseYear > year &&
+		//	//	..... )
+		//	//	.OrderByDescending(m => m.Actors.Count)
+
+		//	// where ისეთი ფილმები რომლების წელიც მეტია ან ტოლია  year
+		//	//&& ასევე ქვეყნის სახელი უდრის countryName 
+		//	//&& ასევე აქტორების რიცხვი მეტია acorCount
+
+		//	//დავალაგოთ  ყველაზე მეტი მსახიობიდან ქვემოთ
+
+		//}
+
 	}
 }
