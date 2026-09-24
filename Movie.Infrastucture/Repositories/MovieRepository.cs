@@ -75,24 +75,172 @@ namespace Movie.Infrastucture.Repositories
 
 
 
-		//public async Task<ICollection<Domain.Entities.Movie>> SearchMovieAsync(
-		//	int year,
-		//	string countryName,
-		//	int acorCount
-		//	) 
-		//{
-		//	//return await _movieDbContext.Movies
-		//	//	.Where(m => m.ReleaseYear > year &&
-		//	//	..... )
-		//	//	.OrderByDescending(m => m.Actors.Count)
+		// ===============================
+		// დავალება 1
+		// ===============================
 
-		//	// where ისეთი ფილმები რომლების წელიც მეტია ან ტოლია  year
-		//	//&& ასევე ქვეყნის სახელი უდრის countryName 
-		//	//&& ასევე აქტორების რიცხვი მეტია acorCount
+		// public async Task<ICollection<Domain.Entities.Movie>> SearchMoviesByStudioAsync(
+		//     int year,
+		//     string studioName,
+		//     int minimumActorCount)
+		// {
+		//
+		//     // დააბრუნეთ ისეთი ფილმები:
+		//
+		//     // 1. ReleaseYear უნდა იყოს year-ზე მეტი ან ტოლი
+		//     // 2. Studio.Name უნდა უდრიდეს studioName-ს
+		//     // 3. Actors.Count უნდა იყოს minimumActorCount-ზე მეტი ან ტოლი
+		//
+		//     // შედეგები დაალაგეთ:
+		//     // პირველ რიგში ReleaseYear-ის მიხედვით კლებადობით
+		//     // შემდეგ Title-ის მიხედვით ზრდადობით
+		//
+		//     // გამოიყენეთ:
+		//     // Where
+		//     // OrderByDescending
+		//     // ThenBy
+		//
+		// }
+		public async Task<ICollection<Domain.Entities.Movie>> SearchMoviesByStudioAsync(
+			int year,
+			string studioName,
+			int minimumActorCount)
+		{
+			return await _movieDbContext.Movies
+				.Include(m => m.Studio)
+				.Include(m => m.Actors)
+				.Where(m => m.ReleaseYear >= year &&
+							m.Studio.Name == studioName &&
+							m.Actors.Count >= minimumActorCount)
 
-		//	//დავალაგოთ  ყველაზე მეტი მსახიობიდან ქვემოთ
+				.OrderByDescending(m => m.ReleaseYear) /// 2022  'A'  2022  'b'
+				.ThenBy(m => m.Title)
+				//IQueryable
+				.ToListAsync();
+		}
 
-		//}
+
+
+
+
+		// ===============================
+		// დავალება 2
+		// ===============================
+
+		// public async Task<ICollection<Domain.Entities.Movie>> SearchMoviesByCountryAsync(
+		//     string countryName,
+		//     int minimumYear,
+		//     int maximumActorCount)
+		// {
+		//
+		//     // დააბრუნეთ ისეთი ფილმები:
+		//
+		//     // 1. Studio.Country.Name უნდა უდრიდეს countryName-ს
+		//     // 2. ReleaseYear უნდა იყოს minimumYear-ზე მეტი ან ტოლი
+		//     // 3. Actors.Count უნდა იყოს maximumActorCount-ზე ნაკლები ან ტოლი
+		//
+		//     // შედეგები დაალაგეთ:
+		//     // პირველ რიგში მსახიობების რაოდენობის მიხედვით ზრდადობით
+		//     // შემდეგ ReleaseYear-ის მიხედვით კლებადობით
+		//     // შემდეგ Title-ის მიხედვით ზრდადობით
+		//
+		//     // გამოიყენეთ:
+		//     // Where
+		//     // OrderBy
+		//     // ThenByDescending
+		//     // ThenBy
+		//
+		// }
+
+
+		public async Task<ICollection<Domain.Entities.Movie>> SearchMoviesByCountryAsync(
+			string countryName,
+			int minimumYear,
+			int maximumActorCount)
+		{
+			return await _movieDbContext.Movies
+				.Include(m => m.Studio)
+				   .ThenInclude(s => s.Country)
+				 .Include(m => m.Actors)
+
+				 .Where(m => m.Studio.Country.Name == countryName &&
+							m.ReleaseYear >= minimumYear &&
+							m.Actors.Count <= maximumActorCount)
+				 .OrderBy(m => m.Actors.Count)
+				 .ThenByDescending(m => m.ReleaseYear)
+				 .ThenBy(m => m.Title)
+
+				 .ToListAsync();
+		}
+
+		// ===============================
+		// დავალება 3
+		// ===============================
+
+		// public async Task<ICollection<Domain.Entities.Movie>> SearchMoviesAdvancedAsync(
+		//     int fromYear,
+		//     int toYear,
+		//     string countryName,
+		//     string titleText,
+		//     int minimumActorCount)
+		// {
+		//
+		//     // დააბრუნეთ ისეთი ფილმები:
+		//
+		//     // 1. ReleaseYear უნდა იყოს fromYear-სა და toYear-ს შორის
+		//     //    ორივე ჩათვლით
+		//
+		//     // 2. Studio.Country.Name უნდა უდრიდეს countryName-ს
+		//
+		//     // 3. Title უნდა შეიცავდეს titleText-ს
+		//
+		//     // 4. Actors.Count უნდა იყოს minimumActorCount-ზე მეტი ან ტოლი
+		//
+		//     // შედეგები დაალაგეთ:
+		//     // პირველ რიგში მსახიობების რაოდენობის მიხედვით კლებადობით
+		//     // შემდეგ ReleaseYear-ის მიხედვით კლებადობით
+		//     // შემდეგ Studio.Name-ის მიხედვით ზრდადობით
+		//     // ბოლოს Title-ის მიხედვით ზრდადობით
+		//
+		//     // გამოიყენეთ:
+		//     // Where
+		//     // Contains
+		//     // OrderByDescending
+		//     // ThenByDescending
+		//     // ThenBy
+		//
+		// }
+
+		public async Task<ICollection<Domain.Entities.Movie>> SearchMoviesAdvancedAsync(
+			int fromYear,
+			int toYear,
+			string countryName,
+			string titleText,
+			int minimumActorCount)
+
+		{
+			return await _movieDbContext.Movies
+				.Include(m => m.Studio)
+					.ThenInclude(s => s.Country)
+				.Include(m => m.Actors)
+
+
+				.Where(m => m.ReleaseYear >= fromYear &&
+							m.ReleaseYear <= toYear &&
+							m.Studio.Country.Name == countryName &&
+							m.Title.Contains(titleText) &&
+							m.Actors.Count >= minimumActorCount)
+
+
+				.OrderByDescending(m => m.Actors.Count)
+				.ThenByDescending(m => m.ReleaseYear)
+				.ThenBy(m => m.Studio.Name)
+				.ThenBy(m => m.Title)
+
+				.ToListAsync();
+
+		}
+
 
 	}
 }

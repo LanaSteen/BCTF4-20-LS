@@ -16,17 +16,26 @@ namespace Movie.Infrastucture.Data
 		public DbSet<StudioDetails> StudioDetails { get; set; }
 
 
+		public MovieDbContext()
+		{
+
+		}
+
+		public MovieDbContext(DbContextOptions<MovieDbContext> options) : base(options)
+		{
+		}
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
-			IConfiguration configuration = new ConfigurationBuilder()
-				.SetBasePath(AppContext.BaseDirectory)
-				.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-				.Build();
-
-			var _connectionString = configuration.GetConnectionString("DefaultConnection");
-
-			optionsBuilder.UseSqlServer(_connectionString);
+			if(!optionsBuilder.IsConfigured)
+			{
+				var configuration = new ConfigurationBuilder()
+					.SetBasePath(AppContext.BaseDirectory)
+					.AddJsonFile("appsettings.json")
+					.Build();
+				var connectionString = configuration.GetConnectionString("DefaultConnection");
+				optionsBuilder.UseSqlServer(connectionString);
+			}
 		}
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -11,5 +11,13 @@ namespace Movie.Service.Interfaces
 		 Task AddMovieAsync(CreateMovieDTO movieDto);
 
 		 Task<MovieDTO> GetMovieByIdAsync(int id);
-	}
+
+		Task<ICollection<SerachMovieDTO>> SearchMoviesByCountryAsync(
+				string countryName,
+			int minimumYear,
+			int maximumActorCount);
+		Task<ICollection<SerachMovieDTO>> SearchMoviesByStudioAsync(
+			int year, string studioName, int minimumActorCount);
+		
+		}
 }

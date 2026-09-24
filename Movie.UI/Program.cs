@@ -68,7 +68,7 @@ namespace Movie.UI
 			//{
 			//	Console.WriteLine(movie);
 			//}
-			#endregion 
+			#endregion
 
 
 
@@ -131,19 +131,34 @@ namespace Movie.UI
 
 
 
-			var actorsWithMovies = await dbContext.Actors
-				.Include(a => a.Movies)
-				.ToListAsync();
-			foreach (var item in actorsWithMovies)
+			//var actorsWithMovies = await dbContext.Actors
+			//	.Include(a => a.Movies)
+			//	.ToListAsync();
+			//foreach (var item in actorsWithMovies)
+			//{
+			//	Console.Write($"{item.FirstName} {item.LastName}");
+			//	foreach (var movie in item.Movies)
+			//	{
+			//		Console.Write($" - {movie.Title}");
+			//	}
+			//	Console.WriteLine();
+			//}
+
+
+
+
+
+			var searchedFilms = await movieService.SearchMoviesByStudioAsync(1990, "Warner Bros", 1);
+
+
+			foreach (var item in searchedFilms)
 			{
-				Console.Write($"{item.FirstName} {item.LastName}");
-				foreach (var movie in item.Movies)
-				{
-					Console.Write($" - {movie.Title}");
-				}
-				Console.WriteLine();
+				Console.WriteLine(item);
 			}
 
+
+			////////// country studio კავშირი გასასწორებელია
 		}
 	}
 }
+// unit   --   
