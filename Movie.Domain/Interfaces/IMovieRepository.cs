@@ -7,7 +7,8 @@ namespace Movie.Domain.Interfaces
 {
 	public interface IMovieRepository
 	{
-		Task<ICollection<Movie.Domain.Entities.Movie>> GetAllMoviesAsync();
+		Task<ICollection<Movie.Domain.Entities.Movie>> GetAllMoviesAsync(
+			CancellationToken cancellationToken = default);
 		Task AddMovieAsync(Movie.Domain.Entities.Movie movie);
 
 		Task<Movie.Domain.Entities.Movie> GetMovieByIdAsync(int id);

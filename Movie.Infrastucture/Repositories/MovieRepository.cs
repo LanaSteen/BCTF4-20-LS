@@ -23,11 +23,12 @@ namespace Movie.Infrastucture.Repositories
 			//await _movieDbContext.SaveChangesAsync();
 		}
 
-		public async Task<ICollection<Domain.Entities.Movie>> GetAllMoviesAsync()
+		public async Task<ICollection<Domain.Entities.Movie>> GetAllMoviesAsync(
+			CancellationToken cto = default)
 		{
 			return await _movieDbContext.Movies
 				.Include(m => m.Studio)
-				.ToListAsync();
+				.ToListAsync(cto);
 		}
 
 
@@ -108,6 +109,7 @@ namespace Movie.Infrastucture.Repositories
 		{
 			return await _movieDbContext.Movies
 				.Include(m => m.Studio)
+				  .ThenInclude(s => s.Country) /// 
 				.Include(m => m.Actors)
 				.Where(m => m.ReleaseYear >= year &&
 							m.Studio.Name == studioName &&

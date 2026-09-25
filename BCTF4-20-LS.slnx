@@ -45,6 +45,7 @@
     <Project Path="Movie.Service/Movie.Service.csproj" Id="5cf875d4-b227-4e4b-97e1-af707ac95cad" />
     <Project Path="Movie.Test/Movie.Test.csproj" Id="b8c2b390-28c1-47cf-9b58-00a86d6efcb0" />
     <Project Path="Movie.UI/Movie.UI.csproj" Id="bc8a5b27-b4e5-4c2d-bb41-6623a948915c" />
+    <Project Path="Movie.Web1/Movie.Web1.csproj" Id="a90742ea-29c3-45f2-bd24-cd3a62f5877f" />
   </Folder>
   <Project Path="1ADONet/1ADONet.csproj" Id="fb5160bd-b148-48a3-af34-fb7524feb610" />
   <Project Path="1EFcore/1EFcore.csproj" Id="de5b7bba-3fd1-4a44-b3ee-eecaa989d8c0" />

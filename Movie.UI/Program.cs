@@ -144,6 +144,9 @@ namespace Movie.UI
 			//	Console.WriteLine();
 			//}
 
+			CancellationTokenSource cts = new CancellationTokenSource();
+			var movvies = await movieService.GetAllMoviesAsync(cts.Token);
+
 
 
 

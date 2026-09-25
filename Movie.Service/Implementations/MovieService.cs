@@ -21,12 +21,14 @@ namespace Movie.Service.Implementations
 
 
 
-		public async Task<ICollection<MovieDTO>> GetAllMoviesAsync()
+		public async Task<ICollection<MovieDTO>> GetAllMoviesAsync(
+			CancellationToken cto = default)
 		{
-			var movies = await _movieRepository.GetAllMoviesAsync();
+			var movies = await _movieRepository.GetAllMoviesAsync(cto);
 
 			var movieDtos = movies.Select(m => new MovieDTO
 			{
+				Id = m.Id,
 				Title = m.Title,
 				ReleaseYear = m.ReleaseYear,
 				StudioName = m.Studio.Name,
@@ -209,7 +211,8 @@ namespace Movie.Service.Implementations
 				Title = movie.Title,
 				ReleaseYear = movie.ReleaseYear,
 				StudioName = movie.Studio.Name,
-				CountryName = movie.Studio.Country?.Name  ?? "rame",
+				//CountryName = movie.Studio.Country?.Name  ?? "rame",
+				CountryName = movie.Studio.Country.Name,
 				ActorCount = movie.Actors.Count
 			};
 
