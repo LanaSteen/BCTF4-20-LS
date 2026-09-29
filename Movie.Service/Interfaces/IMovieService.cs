@@ -12,6 +12,8 @@ namespace Movie.Service.Interfaces
 
 		 Task<MovieDTO> GetMovieByIdAsync(int id);
 
+		Task DeleteMovieAsync(int id);
+
 		Task<ICollection<SerachMovieDTO>> SearchMoviesByCountryAsync(
 				string countryName,
 			int minimumYear,
