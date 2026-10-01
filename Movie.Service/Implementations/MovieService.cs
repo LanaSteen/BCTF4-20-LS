@@ -129,7 +129,10 @@ namespace Movie.Service.Implementations
 
 
 
-			await _movieRepository.UpdateMovieAsync(id, movie);
+			await _movieRepository.UpdateMovieAsync(id, movie);  // delete studio
+			await _movieRepository.UpdateMovieAsync(id, movie);  // delete studiodetails
+
+
 			await _unitOfWork.SaveChangesAsync();
 		}
 

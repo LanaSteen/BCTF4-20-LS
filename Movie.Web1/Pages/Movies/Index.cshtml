@@ -41,7 +41,9 @@
             
             </div> 
              <button type="submit" class="search-btn"> Search </button> 
-             <button type="button" class="btn btn-danger"> Reset Filter </button>
+             @* <button type="button" class="btn btn-danger"> Reset Filter </button> *@
+             <a class="details-btn" asp-area="" asp-page="/Movies/Index">Reset Filter </a>
+
             
       </form>
 
@@ -93,3 +95,8 @@
 </div>
 
 <a class="btn btn-primary" asp-area="" asp-page="/Movies/Create"> Create Movie </a>
+
+
+
+
+@await Component.InvokeAsync("LatestMovies")

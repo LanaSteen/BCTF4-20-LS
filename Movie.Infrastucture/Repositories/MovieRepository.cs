@@ -37,6 +37,7 @@ namespace Movie.Infrastucture.Repositories
 			return await _movieDbContext.Movies
 				.Include(m => m.Studio)
 				.FirstOrDefaultAsync(m => m.Id == id);
+			//await _movieDbContext.SaveChangesAsync();
 		}
 
 

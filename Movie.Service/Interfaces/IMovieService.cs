@@ -13,6 +13,7 @@ namespace Movie.Service.Interfaces
 		 Task<MovieDTO> GetMovieByIdAsync(int id);
 
 		Task DeleteMovieAsync(int id);
+		Task UpdateMovieAsync(int id, UpdateMovieDTO movieDto);
 
 		Task<ICollection<SerachMovieDTO>> SearchMoviesByCountryAsync(
 				string countryName,

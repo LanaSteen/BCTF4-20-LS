@@ -14,7 +14,7 @@ namespace Movie.Web1
 
 			// Add services to the container.
 			builder.Services.AddRazorPages();
-
+			//builder.Services.AddViewComponents();
 
 			builder.Services.AddScoped<IMovieRepository, MovieRepository>();
 			builder.Services.AddDbContext<MovieDbContext>();
