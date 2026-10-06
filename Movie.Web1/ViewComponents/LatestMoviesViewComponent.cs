@@ -28,3 +28,6 @@ namespace Movie.Web1.ViewComponents
 
 	}
 }
+
+
+// M  V   C 

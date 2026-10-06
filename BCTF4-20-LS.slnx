@@ -45,7 +45,14 @@
     <Project Path="Movie.Service/Movie.Service.csproj" Id="5cf875d4-b227-4e4b-97e1-af707ac95cad" />
     <Project Path="Movie.Test/Movie.Test.csproj" Id="b8c2b390-28c1-47cf-9b58-00a86d6efcb0" />
     <Project Path="Movie.UI/Movie.UI.csproj" Id="bc8a5b27-b4e5-4c2d-bb41-6623a948915c" />
+    <Project Path="Movie.Web.MVC/Movie.Web.MVC.csproj" Id="d24c1bbf-9530-475d-a6b1-992a089971f9" />
     <Project Path="Movie.Web1/Movie.Web1.csproj" Id="a90742ea-29c3-45f2-bd24-cd3a62f5877f" />
+  </Folder>
+  <Folder Name="/SchoolApp/">
+    <Project Path="Scholl.Domain/School.Domain.csproj" Id="e0d4ae66-530c-41ac-956c-6f424b143bff" />
+    <Project Path="School.Application/School.Application.csproj" Id="61bbd55a-5896-4ca6-9427-5b9d84254218" />
+    <Project Path="School.Infrastucture/School.Infrastucture.csproj" Id="13b6b96f-301e-4b27-bda3-871184f24b70" />
+    <Project Path="School.Web/School.Web.csproj" Id="deaf9ca8-9a18-4bcc-9097-a24d2b0b89bf" />
   </Folder>
   <Project Path="1ADONet/1ADONet.csproj" Id="fb5160bd-b148-48a3-af34-fb7524feb610" />
   <Project Path="1EFcore/1EFcore.csproj" Id="de5b7bba-3fd1-4a44-b3ee-eecaa989d8c0" />
