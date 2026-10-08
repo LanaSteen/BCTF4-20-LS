@@ -1,4 +1,10 @@
 
+using Microsoft.EntityFrameworkCore;
+using School.Domain.Interfaces;
+using School.Infrastucture;
+using School.Infrastucture.Data;
+using School.Infrastucture.Repositories;
+
 namespace School.Web
 {
 	public class Program
@@ -12,6 +18,24 @@ namespace School.Web
 			builder.Services.AddControllers();
 			// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 			builder.Services.AddOpenApi();
+
+
+			///////// add context +
+			
+			  builder.Services.AddDbContext<SchoolDbContext>(options =>
+			  {
+				  options.UseSqlServer(builder.Configuration
+					  .GetConnectionString("DefaultConnection"));
+			  });
+
+			builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+			builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+
+
+
+			////
+
 
 			var app = builder.Build();
 

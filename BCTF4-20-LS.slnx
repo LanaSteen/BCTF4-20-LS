@@ -52,6 +52,7 @@
     <Project Path="Scholl.Domain/School.Domain.csproj" Id="e0d4ae66-530c-41ac-956c-6f424b143bff" />
     <Project Path="School.Application/School.Application.csproj" Id="61bbd55a-5896-4ca6-9427-5b9d84254218" />
     <Project Path="School.Infrastucture/School.Infrastucture.csproj" Id="13b6b96f-301e-4b27-bda3-871184f24b70" />
+    <Project Path="School.Tests/School.Tests.csproj" Id="d453b123-49e9-4403-98ad-a8c2089c65ae" />
     <Project Path="School.Web/School.Web.csproj" Id="deaf9ca8-9a18-4bcc-9097-a24d2b0b89bf" />
   </Folder>
   <Project Path="1ADONet/1ADONet.csproj" Id="fb5160bd-b148-48a3-af34-fb7524feb610" />
