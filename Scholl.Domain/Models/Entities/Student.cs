@@ -12,7 +12,7 @@ namespace School.Domain.Models.Entities
 		public string LastName { get; set; }
 		public string Email { get; set; }
 
-		public int StudentProfileId { get; set; }
+		//public int StudentProfileId { get; set; }
 		public StudentProfile StudentProfile { get; set; }
 
 		public DateTime DateOfBirth { get; set; }

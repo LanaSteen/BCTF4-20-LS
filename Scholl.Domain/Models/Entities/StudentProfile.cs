@@ -10,9 +10,9 @@ namespace School.Domain.Models.Entities
 
 		public string  IdentityNumber { get; set; }
 
-		public int StudentId { get; set; }
+		public int StudentId { get; set; } //fk
 
-		public Student Student { get; set; }
+		public Student Student { get; set; } // navigation property
 
 	}
 }

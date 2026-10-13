@@ -28,10 +28,10 @@ namespace School.Infrastucture.Data
 			base.OnModelCreating(modelBuilder);
 
 
-			modelBuilder.Entity<Student>()
-				.HasOne(s => s.StudentProfile)
-				.WithOne(sp => sp.Student)
-				.HasForeignKey<StudentProfile>(sp => sp.StudentId);
+			//modelBuilder.Entity<Student>()
+			//	.HasOne(s => s.StudentProfile)
+			//	.WithOne(sp => sp.Student)
+			//	.HasForeignKey<StudentProfile>(sp => sp.StudentId);
 
 			modelBuilder.Entity<StudentProfile>()
 				.HasOne(sp => sp.Student)
