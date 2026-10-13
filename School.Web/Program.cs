@@ -1,5 +1,7 @@
 
 using Microsoft.EntityFrameworkCore;
+using School.Application.Services.Implementations;
+using School.Application.Services.Interfaces;
 using School.Domain.Interfaces;
 using School.Infrastucture;
 using School.Infrastucture.Data;
@@ -31,7 +33,8 @@ namespace School.Web
 			builder.Services.AddScoped<IStudentRepository, StudentRepository>();
 			builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-
+			builder.Services.AddScoped<IStudentService, StudentService>();
+	
 
 
 			////

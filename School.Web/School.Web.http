@@ -1,6 +1,10 @@
-@School.Web_HostAddress = http://localhost:5041
+@School.Web_HostAddress = https://localhost:7020
 
 GET {{School.Web_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+GET {{School.Web_HostAddress}}/api/Student/
 Accept: application/json
 
 ###
