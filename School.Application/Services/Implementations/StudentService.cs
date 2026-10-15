@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
-using School.ApplicationUser.Services.Interfaces;
+
+using School.Application.Services.Interfaces;
 using School.Domain.Interfaces;
 using School.Domain.Models.DTOs;
 using School.Domain.Models.Entities;
@@ -8,7 +9,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace School.ApplicationUser.Services.Implementations
+namespace School.Application.Services.Implementations
 {
 	public class StudentService : IStudentService
 	{

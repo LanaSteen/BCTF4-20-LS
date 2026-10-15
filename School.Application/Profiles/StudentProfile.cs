@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace School.ApplicationUser.Profiles
+namespace School.Application.Profiles
 {
 	public class StudentProfile : Profile
 	{

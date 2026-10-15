@@ -6,8 +6,8 @@ using School.Infrastucture;
 using School.Infrastucture.Data;
 using School.Infrastucture.Repositories;
 using School.Infrastucture.Identity;
-using School.ApplicationUser.Services.Implementations;
-using School.ApplicationUser.Services.Interfaces;
+using School.Application.Services.Implementations;
+using School.Application.Services.Interfaces;
 
 namespace School.Web
 {
@@ -49,7 +49,9 @@ namespace School.Web
 			////
 			///  automapper add +
 			//builder.Services.AddAutoMapper(cfg=> { },typeof(Program).Assembly);
-			builder.Services.AddAutoMapper(cfg => { }, typeof(Program).Assembly, typeof(StudentService).Assembly);
+			builder.Services.AddAutoMapper(cfg => { },
+				typeof(Program).Assembly, 
+				typeof(StudentService).Assembly);
 			/////
 
 
