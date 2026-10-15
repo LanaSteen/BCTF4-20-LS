@@ -1,12 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using School.Domain.Models.Entities;
+using School.Infrastucture.Identity;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace School.Infrastucture.Data
 {
-	public class SchoolDbContext : DbContext
+	public class SchoolDbContext : IdentityDbContext<ApplicationUser>
 	{
 		public SchoolDbContext(DbContextOptions<SchoolDbContext> options) : base(options)
 		{

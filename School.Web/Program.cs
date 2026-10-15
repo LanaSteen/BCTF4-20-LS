@@ -1,11 +1,13 @@
 
 using Microsoft.EntityFrameworkCore;
-using School.Application.Services.Implementations;
-using School.Application.Services.Interfaces;
+
 using School.Domain.Interfaces;
 using School.Infrastucture;
 using School.Infrastucture.Data;
 using School.Infrastucture.Repositories;
+using School.Infrastucture.Identity;
+using School.ApplicationUser.Services.Implementations;
+using School.ApplicationUser.Services.Interfaces;
 
 namespace School.Web
 {
@@ -38,14 +40,23 @@ namespace School.Web
 
 
 			////
-			///  swagger add
+			///  swagger add +
 
 			builder.Services.AddEndpointsApiExplorer();
 			builder.Services.AddSwaggerGen();
 
 
 			////
+			///  automapper add +
+			//builder.Services.AddAutoMapper(cfg=> { },typeof(Program).Assembly);
+			builder.Services.AddAutoMapper(cfg => { }, typeof(Program).Assembly, typeof(StudentService).Assembly);
+			/////
 
+
+			/// add identity + 
+			builder.Services.AddIdentityCore<ApplicationUser>()
+				.AddEntityFrameworkStores<SchoolDbContext>();
+			/// 
 
 			var app = builder.Build();
 

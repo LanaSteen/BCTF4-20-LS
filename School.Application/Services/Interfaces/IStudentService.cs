@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace School.Application.Services.Interfaces
+namespace School.ApplicationUser.Services.Interfaces
 {
 	public interface IStudentService
 	{

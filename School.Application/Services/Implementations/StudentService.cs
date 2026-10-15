@@ -1,4 +1,5 @@
-﻿using School.Application.Services.Interfaces;
+﻿using AutoMapper;
+using School.ApplicationUser.Services.Interfaces;
 using School.Domain.Interfaces;
 using School.Domain.Models.DTOs;
 using School.Domain.Models.Entities;
@@ -7,7 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace School.Application.Services.Implementations
+namespace School.ApplicationUser.Services.Implementations
 {
 	public class StudentService : IStudentService
 	{
@@ -15,10 +16,15 @@ namespace School.Application.Services.Implementations
 		private readonly IStudentRepository _studentRepository;
 		private readonly IUnitOfWork _unitOfWork;
 
-		public StudentService(IStudentRepository studentRepository,IUnitOfWork unitOfWork)
+		private readonly IMapper _mapper;
+
+		public StudentService(IStudentRepository studentRepository,
+			IUnitOfWork unitOfWork,
+			IMapper mapper)
 		{
 			_studentRepository = studentRepository;
 			_unitOfWork = unitOfWork;
+			_mapper = mapper;
 		}
 
 
@@ -43,17 +49,17 @@ namespace School.Application.Services.Implementations
 			}
 		}
 
-		private static StudentDTO MapStudentToDTO(Student student)
-		{
-			return new StudentDTO
-			{
-				Id = student.Id,
-				FirstName = student.FirstName,
-				LastName = student.LastName,
-				Email = student.Email,
-				DateOfBirth = student.DateOfBirth
-			};
-		}
+		//private static StudentDTO MapStudentToDTO(Student student)
+		//{
+		//	return new StudentDTO
+		//	{
+		//		Id = student.Id,
+		//		FirstName = student.FirstName,
+		//		LastName = student.LastName,
+		//		Email = student.Email,
+		//		DateOfBirth = student.DateOfBirth
+		//	};
+		//}
 
 		public async Task<ICollection<StudentDTO>> GetAllStudetnsAsync(
 			CancellationToken cancellationToken)
@@ -62,7 +68,7 @@ namespace School.Application.Services.Implementations
 
 
 			return students
-				  .Select(MapStudentToDTO)
+				  .Select(_mapper.Map<Student, StudentDTO>)
 				  .ToList();
 
 		}
@@ -77,7 +83,8 @@ namespace School.Application.Services.Implementations
 				return null;
   			}
 
-			return MapStudentToDTO(student);
+			//return MapStudentToDTO(student);
+			return _mapper.Map<StudentDTO>(student);
 
 		}
 
@@ -86,13 +93,15 @@ namespace School.Application.Services.Implementations
 
 		public async Task<StudentDTO> AddStudentAsync(CreateStudentDTO createStudentDto,CancellationToken cancellationToken)
 		{
-			var student = new Student
-			{
-				FirstName = createStudentDto.FirstName,
-				LastName = createStudentDto.LastName,
-				Email = createStudentDto.Email,
-				DateOfBirth = createStudentDto.DateOfBirth
-			};
+			//var student = new Student
+			//{
+			//	FirstName = createStudentDto.FirstName,
+			//	LastName = createStudentDto.LastName,
+			//	Email = createStudentDto.Email,
+			//	DateOfBirth = createStudentDto.DateOfBirth
+			//};
+
+			var student = _mapper.Map<Student>(createStudentDto);
 
 			ValidateStudent(
 				createStudentDto.FirstName,
@@ -104,7 +113,8 @@ namespace School.Application.Services.Implementations
 			await _studentRepository.AddAsync(student, cancellationToken);
 			await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-			return MapStudentToDTO(student);
+			//return MapStudentToDTO(student);
+			return _mapper.Map<StudentDTO>(student);   
 		}
 
 

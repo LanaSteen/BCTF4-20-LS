@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using School.Application.Services.Interfaces;
+using School.ApplicationUser.Services.Interfaces;
 using School.Domain.Models.DTOs;
 using School.Domain.Models.Entities;
 
