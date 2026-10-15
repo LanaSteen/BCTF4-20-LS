@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="10.0.13" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Movie.Domain\Movie.Domain.csproj" />
     <ProjectReference Include="..\Movie.Infrastucture\Movie.Infrastucture.csproj" />
     <ProjectReference Include="..\Movie.Service\Movie.Service.csproj" />

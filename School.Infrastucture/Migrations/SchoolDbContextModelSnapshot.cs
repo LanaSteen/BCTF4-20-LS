@@ -74,9 +74,6 @@ namespace School.Infrastucture.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("StudentProfileId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.ToTable("Students");

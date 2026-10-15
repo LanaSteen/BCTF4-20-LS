@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="10.0.13" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\UnivercityApplication\UnivercityApplication.csproj" />
     <ProjectReference Include="..\UnivercityCore\UnivercityCore.csproj" />
     <ProjectReference Include="..\UnivercityRepository\UnivercityRepository.csproj" />

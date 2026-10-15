@@ -38,6 +38,13 @@ namespace School.Web
 
 
 			////
+			///  swagger add
+
+			builder.Services.AddEndpointsApiExplorer();
+			builder.Services.AddSwaggerGen();
+
+
+			////
 
 
 			var app = builder.Build();
@@ -46,7 +53,14 @@ namespace School.Web
 			if (app.Environment.IsDevelopment())
 			{
 				app.MapOpenApi();
+			
 			}
+
+			///  add for swagger  +
+			app.UseSwagger();
+			app.UseSwaggerUI();
+
+			//////
 
 			app.UseHttpsRedirection();
 
