@@ -1,13 +1,16 @@
 
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi;
+using School.Application.Services.Implementations;
+using School.Application.Services.Interfaces;
 using School.Domain.Interfaces;
 using School.Infrastucture;
 using School.Infrastucture.Data;
-using School.Infrastucture.Repositories;
 using School.Infrastucture.Identity;
-using School.Application.Services.Implementations;
-using School.Application.Services.Interfaces;
+using School.Infrastucture.Repositories;
+using System.Text;
 
 namespace School.Web
 {
@@ -37,6 +40,7 @@ namespace School.Web
 
 			builder.Services.AddScoped<IStudentService, StudentService>();
 			builder.Services.AddScoped<IUserservise, Userservise>();
+			builder.Services.AddScoped<IAuthServise, AuthServise>();
 
 
 
@@ -44,7 +48,34 @@ namespace School.Web
 			///  swagger add +
 
 			builder.Services.AddEndpointsApiExplorer();
-			builder.Services.AddSwaggerGen();
+			//builder.Services.AddSwaggerGen();
+			builder.Services.AddSwaggerGen(options =>
+			{
+				options.SwaggerDoc("v1", new OpenApiInfo
+				{
+					Title = "School API",
+					Version = "v1"
+				});
+				options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+				{
+					In = ParameterLocation.Header,
+					Description = "Please enter a valid token",
+					Name = "Authorization",
+					Type = SecuritySchemeType.Http,
+					BearerFormat = "JWT",
+					Scheme = "Bearer"
+				});
+				options.AddSecurityRequirement(document =>
+
+					new OpenApiSecurityRequirement
+					{
+						[new OpenApiSecuritySchemeReference(
+							 "Bearer",
+							 document)] = []
+					});
+
+			});
+
 
 
 			////
@@ -60,6 +91,29 @@ namespace School.Web
 			builder.Services.AddIdentityCore<ApplicationUser>()
 				.AddEntityFrameworkStores<SchoolDbContext>();
 			/// 
+
+			////  jwt +
+			var jwtKey = builder.Configuration["Jwt:Key"];
+			builder.Services.AddAuthentication(options =>
+			{
+				options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+				options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+			}).AddJwtBearer(options =>
+			{
+				options.TokenValidationParameters = new TokenValidationParameters
+				{
+					ValidateIssuer = true,
+					ValidateAudience = true,
+					ValidateLifetime = true,
+					ValidateIssuerSigningKey = true,
+					ValidIssuer = builder.Configuration["Jwt:Issuer"],
+					ValidAudience = builder.Configuration["Jwt:Audience"],
+					IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey))
+				};
+			});
+			//////
+
+
 
 			var app = builder.Build();
 
@@ -78,6 +132,8 @@ namespace School.Web
 
 			app.UseHttpsRedirection();
 
+
+			app.UseAuthentication();
 			app.UseAuthorization();
 
 

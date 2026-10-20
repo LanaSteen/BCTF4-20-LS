@@ -8,7 +8,7 @@ namespace School.Application.Services.Interfaces
 	public interface IUserservise
 	{
 		Task RegisterUserAsync(RegisterDTO dto, CancellationToken cancellationToken = default);
-		Task<bool> LoginUserAsync(LoginDTO dto, CancellationToken cancellationToken = default);
+		//Task<bool> LoginUserAsync(LoginDTO dto, CancellationToken cancellationToken = default);
 
 	}
 }

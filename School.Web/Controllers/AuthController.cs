@@ -10,10 +10,12 @@ namespace School.Web.Controllers
 	public class AuthController : ControllerBase
 	{
 		private readonly IUserservise _userservise;
+		private readonly IAuthServise _authServise;
 
-		public AuthController(IUserservise userservise)
+		public AuthController(IUserservise userservise, IAuthServise authServise)
 		{
 			_userservise = userservise;
+			_authServise = authServise;
 		}
 
 		[HttpPost]
@@ -26,12 +28,12 @@ namespace School.Web.Controllers
 		[HttpPost]
 		public async Task<IActionResult> Login([FromBody] LoginDTO dto, CancellationToken cancellationToken)
 		{
-			var isAuthenticated = await _userservise.LoginUserAsync(dto, cancellationToken);
-			if (!isAuthenticated)
+			var result= await _authServise.LoginUserAsync(dto, cancellationToken);
+			if (result == null)
 			{
 				return Unauthorized("Invalid email or password");
 			}
-			return Ok("User logged in successfully");
+			return Ok(result);
 		}
 
 	}

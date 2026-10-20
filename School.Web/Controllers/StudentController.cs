@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using School.Application.Services.Interfaces;
 using School.Domain.Models.DTOs;
 using School.Domain.Models.Entities;
 
 namespace School.Web.Controllers
 {
+	[Authorize]
 	[ApiController]
 	[Route("api/[controller]/[action]")]
 	public class StudentController : ControllerBase
@@ -18,6 +20,7 @@ namespace School.Web.Controllers
 		}
 
 		//C R U D
+		[AllowAnonymous]
 		[HttpGet]  // read
 		public async Task<IActionResult> GetAllStudents(CancellationToken cancellationToken)
 		{

@@ -33,16 +33,16 @@ namespace School.Application.Services.Implementations
 			}
 		}
 
-		public async Task<bool> LoginUserAsync(LoginDTO dto, CancellationToken cancellationToken = default)
-		{
-			var user = await _userManager.FindByEmailAsync(dto.Email);
-			if (user == null)
-			{
-				return false;
-			}
-			var result = await _userManager.CheckPasswordAsync(user, dto.Password);
-			return result;
-		}
+		//public async Task<bool> LoginUserAsync(LoginDTO dto, CancellationToken cancellationToken = default)
+		//{
+		//	var user = await _userManager.FindByEmailAsync(dto.Email);
+		//	if (user == null)
+		//	{
+		//		return false;
+		//	}
+		//	var result = await _userManager.CheckPasswordAsync(user, dto.Password);
+		//	return result;
+		//}
 
 
 	}
