@@ -36,7 +36,8 @@ namespace School.Web
 			builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 			builder.Services.AddScoped<IStudentService, StudentService>();
-	
+			builder.Services.AddScoped<IUserservise, Userservise>();
+
 
 
 			////

@@ -7,6 +7,6 @@ namespace School.Infrastucture.Identity
 {
 	public class ApplicationUser  : IdentityUser
 	{
-		
+	   
 	}
 }

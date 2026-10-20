@@ -12,8 +12,8 @@ using School.Infrastucture.Data;
 namespace School.Infrastucture.Migrations
 {
     [DbContext(typeof(SchoolDbContext))]
-    [Migration("20261015182244_identityAdded")]
-    partial class identityAdded
+    [Migration("20261020162612_withIdentity")]
+    partial class withIdentity
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
