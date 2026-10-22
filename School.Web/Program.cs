@@ -8,6 +8,7 @@ using School.Application.Services.Interfaces;
 using School.Domain.Interfaces;
 using School.Infrastucture;
 using School.Infrastucture.Data;
+using School.Infrastucture.FileStorage;
 using School.Infrastucture.Identity;
 using School.Infrastucture.Repositories;
 using System.Text;
@@ -42,7 +43,14 @@ namespace School.Web
 			builder.Services.AddScoped<IUserservise, Userservise>();
 			builder.Services.AddScoped<IAuthServise, AuthServise>();
 
+			builder.Services.AddScoped<IStudentProfileRepository, StudentProfileRepository>();
+			builder.Services.AddScoped<IStudentProfileService, StudentProfileService>();
 
+
+
+			/////   file servise add 
+			var webRootPath = builder.Environment.WebRootPath ?? Path.Combine(builder.Environment.ContentRootPath, "wwwroot");
+			builder.Services.AddSingleton<IFileStorageService>(new LocalFileStorageServise(webRootPath));
 
 			////
 			///  swagger add +
@@ -129,6 +137,8 @@ namespace School.Web
 			app.UseSwaggerUI();
 
 			//////
+			///
+			app.UseStaticFiles();  // + for root files
 
 			app.UseHttpsRedirection();
 
