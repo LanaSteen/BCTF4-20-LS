@@ -6,7 +6,7 @@ using School.Domain.Models.Entities;
 
 namespace School.Web.Controllers
 {
-	[Authorize]
+	//[Authorize]
 	[ApiController]
 	[Route("api/[controller]/[action]")]
 	public class StudentController : ControllerBase

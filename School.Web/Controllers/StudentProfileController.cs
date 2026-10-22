@@ -22,9 +22,11 @@ namespace School.Web.Controllers
 		[HttpPost]
 		[Consumes("multipart/form-data")]
 
-		public async Task<IActionResult> UploadProfilePicture(int studentid, [FromForm] IFormFile file, CancellationToken cancellationToken)
+		//public async Task<IActionResult> UploadProfilePicture(int studentid, [FromForm] IFormFile file, CancellationToken cancellationToken)
+	     public async Task<IActionResult> UploadProfilePicture(int studentid, IFormFile file, CancellationToken cancellationToken)
+
 		{
-			if(file == null || file.Length == 0) { 
+			if (file == null || file.Length == 0) { 
 				return BadRequest("No file uploaded.");
 			}
 
